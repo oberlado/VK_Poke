@@ -259,7 +259,10 @@ class PokemonDataHandler(
         imageView.layoutParams =
             LinearLayout.LayoutParams(400, 400)
         withContext(Dispatchers.Main) {
-            Glide.with(activity).load(pokemon.sprites.front_default).into(imageView)
+            Glide.with(activity)
+                .load(pokemon.sprites.front_default)
+                .placeholder(R.drawable.loading)
+                .into(imageView)
             imageView.setOnClickListener {
                 val intent = Intent(activity, DetailActivity::class.java)
                 intent.putExtra("url", url)

@@ -41,11 +41,17 @@ class PokemonViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
                 val pokemonDetail = service.getPokemonDetail(pokemon.url)
                 pokemon.imageUrl = pokemonDetail.sprites.front_default
                 withContext(Dispatchers.Main) {
-                    Glide.with(itemView).load(pokemon.imageUrl).into(spriteImageView)
+                    Glide.with(itemView)
+                        .load(pokemon.imageUrl)
+                        .placeholder(R.drawable.loading)
+                        .into(spriteImageView)
                 }
             }
         } else {
-            Glide.with(itemView).load(imageUrl).into(spriteImageView)
+            Glide.with(itemView)
+                .load(imageUrl)
+                .placeholder(R.drawable.loading)
+                .into(spriteImageView)
         }
     }
 
